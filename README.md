@@ -303,24 +303,6 @@ The obtained value is below the commonly referenced **5% current-distortion limi
 
 ---
 
-# 🎯 Key Features
-
-- **108.8 kW PV array**
-- Two-stage grid-connected PV architecture
-- P&O-based MPPT
-- DC-DC boost converter
-- 600 V DC-link
-- Three-phase VSI
-- dq-frame current control
-- Grid-voltage PLL synchronization
-- Unity power factor operation
-- LCL output filter
-- Dynamic irradiance testing
-- Grid-current THD analysis
-- **2.34% measured grid-current THD**
-
----
-
 # 📌 Conclusion
 
 The MATLAB/Simulink model demonstrates the complete control and grid integration of a **108.8 kW photovoltaic power system**.
