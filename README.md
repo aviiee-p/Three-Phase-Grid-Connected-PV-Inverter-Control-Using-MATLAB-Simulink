@@ -1,4 +1,4 @@
-# Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB/Simulink
+# Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB-Simulink
 
 A MATLAB/Simulink model of a **108 kW two-stage grid-connected photovoltaic (PV) system** featuring:
 
@@ -22,7 +22,7 @@ The system consists of a PV array connected to a **DC-DC boost converter**, whic
 
 The inverter is controlled using a **dq-reference-frame current controller**, while a **Phase-Locked Loop (PLL)** provides grid synchronization. An **LCL filter** is used at the inverter output to attenuate switching-frequency harmonics and improve the quality of the current injected into the grid.
 
-The primary objectives of the system are:
+The main objectives of the system are:
 
 - Maximum power extraction from the PV array
 - Stable DC-link voltage regulation
@@ -59,13 +59,13 @@ The PV array is modeled using a **single-diode equivalent circuit** to reproduce
 
 The total installed PV power is calculated as:
 
-\[
+$$
 P_{PV} = 46 \times 11 \times 215.08
-\]
+$$
 
-\[
-P_{PV} \approx 108.8\text{ kW}
-\]
+$$
+P_{PV} \approx 108.8\ \mathrm{kW}
+$$
 
 The array is subjected to varying irradiance conditions to evaluate the dynamic performance of the MPPT and grid-side control systems.
 
@@ -75,46 +75,46 @@ The array is subjected to varying irradiance conditions to evaluate the dynamic 
 
 The DC-DC boost converter increases the PV-array voltage to the required DC-link voltage of approximately **600 V**.
 
-For an ideal boost converter, the relationship between input voltage, output voltage, and duty cycle is:
+For an ideal boost converter, the relationship between the input voltage, output voltage, and duty cycle is:
 
-\[
+$$
 V_{out} = \frac{V_{in}}{1-D}
-\]
+$$
 
 where:
 
-- \(V_{in}\) = input voltage
-- \(V_{out}\) = output voltage
-- \(D\) = converter duty cycle
+- $V_{in}$ = input voltage
+- $V_{out}$ = output voltage
+- $D$ = converter duty cycle
 
 ### Perturb & Observe MPPT
 
-The **Perturb & Observe (P&O)** algorithm continuously adjusts the converter operating point to track the maximum power point of the PV array.
+The **Perturb & Observe (P&O) MPPT algorithm** continuously adjusts the converter operating point to track the maximum power point of the PV array.
 
 The instantaneous PV power is calculated as:
 
-\[
+$$
 P(t) = V(t)I(t)
-\]
+$$
 
-The changes in power and voltage are then determined:
+The changes in power and voltage are calculated as:
 
-\[
-\Delta P = P(t)-P(t-1)
-\]
+$$
+\Delta P = P(t) - P(t-1)
+$$
 
-\[
-\Delta V = V(t)-V(t-1)
-\]
+$$
+\Delta V = V(t) - V(t-1)
+$$
 
-Based on the signs of \(\Delta P\) and \(\Delta V\), the algorithm determines the direction of the next perturbation.
+The algorithm determines the direction of the next perturbation based on the signs of $\Delta P$ and $\Delta V$.
 
 | Condition | Duty-Cycle Action |
 |---|---|
-| \(\Delta P > 0,\ \Delta V > 0\) | Increase duty cycle |
-| \(\Delta P > 0,\ \Delta V < 0\) | Decrease duty cycle |
-| \(\Delta P < 0,\ \Delta V > 0\) | Decrease duty cycle |
-| \(\Delta P < 0,\ \Delta V < 0\) | Increase duty cycle |
+| $\Delta P > 0$ and $\Delta V > 0$ | Increase duty cycle |
+| $\Delta P > 0$ and $\Delta V < 0$ | Decrease duty cycle |
+| $\Delta P < 0$ and $\Delta V > 0$ | Decrease duty cycle |
+| $\Delta P < 0$ and $\Delta V < 0$ | Increase duty cycle |
 
 This process is repeated continuously so that the PV operating point converges toward the **Maximum Power Point (MPP)**.
 
@@ -130,22 +130,22 @@ The inverter current is controlled in the **synchronous dq reference frame**, al
 
 With the reference frame synchronized to the grid voltage:
 
-- **d-axis current \(i_d\)** primarily controls active power.
-- **q-axis current \(i_q\)** primarily controls reactive power.
+- **d-axis current ($i_d$)** primarily controls active power.
+- **q-axis current ($i_q$)** primarily controls reactive power.
 
 For unity power factor operation:
 
-\[
+$$
 i_q = 0
-\]
+$$
 
 The active-power reference determines the required d-axis current:
 
-\[
+$$
 i_d \propto P
-\]
+$$
 
-Thus, the controller adjusts \(i_d\) according to the available PV power while maintaining \(i_q\) close to zero.
+Thus, the controller adjusts $i_d$ according to the available PV power while maintaining $i_q$ close to zero.
 
 This enables independent control of active and reactive power and allows the system to operate at approximately **unity power factor**.
 
@@ -159,14 +159,14 @@ The PLL tracks the grid voltage phase angle and provides the angular position re
 
 The estimated phase angle can be expressed as:
 
-\[
-\theta = \int \omega_{grid}\,dt
-\]
+$$
+\theta = \int \omega_{\mathrm{grid}}\,dt
+$$
 
 where:
 
-- \(\omega_{grid}\) = grid angular frequency
-- \(\theta\) = estimated grid phase angle
+- $\omega_{\mathrm{grid}}$ = grid angular frequency
+- $\theta$ = estimated grid phase angle
 
 The grid voltage is measured at the **Point of Common Coupling (PCC)**. The PLL uses this measurement to maintain synchronization between the inverter and the utility grid.
 
@@ -182,8 +182,8 @@ The controller generates the inverter voltage references required to minimize th
 
 The control objectives are:
 
-- Track the reference d-axis current \(i_d^*\)
-- Maintain the q-axis current \(i_q^*\) near zero
+- Track the reference d-axis current $i_d^*$
+- Maintain the q-axis current $i_q^*$ near zero
 - Regulate active power according to available PV power
 - Minimize reactive power exchange with the grid
 - Maintain synchronization with the grid voltage
@@ -198,17 +198,17 @@ An **LCL filter** is connected between the inverter and the grid to attenuate hi
 
 The approximate resonance frequency of the filter is:
 
-\[
-f_{res} =
+$$
+f_{\mathrm{res}} =
 \frac{1}{2\pi\sqrt{L_1L_2C_f}}
-\]
+$$
 
 where:
 
-- \(f_{res}\) = LCL-filter resonance frequency
-- \(L_1\) = inverter-side inductance
-- \(L_2\) = grid-side inductance
-- \(C_f\) = filter capacitance
+- $f_{\mathrm{res}}$ = LCL-filter resonance frequency
+- $L_1$ = inverter-side inductance
+- $L_2$ = grid-side inductance
+- $C_f$ = filter capacitance
 
 The LCL filter significantly reduces switching-frequency components in the injected grid current and improves overall power quality.
 
@@ -258,7 +258,7 @@ The small voltage deviation during irradiance transitions demonstrates effective
 
 ![Direct and Quadrature Currents](Waveforms/Direct%20%26%20Quadrature%20Current%20of%20Injected%20Current.png)
 
-The d-axis current \(i_d\) follows the active-power demand, while the q-axis current \(i_q\) is regulated close to zero.
+The d-axis current $i_d$ follows the active-power demand, while the q-axis current $i_q$ is regulated close to zero.
 
 This demonstrates effective decoupled active/reactive current control and confirms the system's ability to operate at approximately **unity power factor**.
 
@@ -303,48 +303,30 @@ The obtained value is below the commonly referenced **5% current-distortion limi
 
 ---
 
-# 🛠️ Getting Started
+# 🎯 Key Features
 
-## Requirements
-
-The following software and toolboxes are required:
-
-- **MATLAB** — preferably R2023a or later
-- **Simulink**
-- **Simscape Electrical**
-- **Simulink Control Design** — for controller tuning, if required
-
----
-
-## ▶️ Running the Simulation
-
-1. **Clone the repository.**
-
-2. **Open MATLAB/Simulink.**
-
-3. Open the main `.slx` model file.
-
-4. Make sure **Simscape Electrical** is installed and available.
-
-5. Run the simulation.
-
-6. Observe the PV-array response, DC-link voltage, dq currents, grid voltage/current waveforms, and THD results.
+- **108.8 kW PV array**
+- Two-stage grid-connected PV architecture
+- P&O-based MPPT
+- DC-DC boost converter
+- 600 V DC-link
+- Three-phase VSI
+- dq-frame current control
+- Grid-voltage PLL synchronization
+- Unity power factor operation
+- LCL output filter
+- Dynamic irradiance testing
+- Grid-current THD analysis
+- **2.34% measured grid-current THD**
 
 ---
 
-# 📁 Project Structure
+# 📌 Conclusion
 
-```text
-Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB-Simulink/
-│
-├── Waveforms/
-│   ├── 3 Phase Grid Voltage & Current at PCC.png
-│   ├── DC Link Voltage.png
-│   ├── Direct & Quadrature Current of Injected Current.png
-│   ├── Dynamic Response of Phase Current & Voltage.png
-│   ├── Irradiation Profile.png
-│   ├── PV Array Outputs.png
-│   └── THD of Grid Current at PCC.png
-│
-├── Three_Phase_Grid_Connected_PV_*.slx
-└── README.md
+The MATLAB/Simulink model demonstrates the complete control and grid integration of a **108.8 kW photovoltaic power system**.
+
+The simulation results show that the proposed control architecture can track the PV maximum power point, maintain the DC-link voltage, regulate active and reactive current components, synchronize the inverter with the grid, and inject high-quality current with low harmonic distortion.
+
+The obtained **2.34% grid-current THD** and near-unity power factor demonstrate the effectiveness of the combined **MPPT, dq-frame current control, PLL synchronization, and LCL filtering** approach.
+
+---
