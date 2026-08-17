@@ -1,4 +1,4 @@
-# Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB-Simulink
+# Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB/Simulink
 
 A MATLAB/Simulink model of a **108 kW two-stage grid-connected photovoltaic (PV) system** featuring:
 
@@ -222,7 +222,7 @@ The system was evaluated under changing solar irradiance conditions to verify th
 
 ## ☀️ Irradiance Profile
 
-![Irradiance Profile](figures/Irradiation_Profile.png)
+![Irradiance Profile](Waveforms/Irradiation%20Profile.png)
 
 A step-change irradiance profile is applied to evaluate the dynamic response of the complete system.
 
@@ -234,7 +234,7 @@ This allows the controller to be tested at multiple PV operating points.
 
 ## ⚡ PV Array Power, Voltage, and Current
 
-![PV Array Outputs](figures/PV_array_outputs.png)
+![PV Array Outputs](Waveforms/PV%20Array%20Outputs.png)
 
 The PV array power, voltage, and current responses are shown for the applied irradiance profile.
 
@@ -246,7 +246,7 @@ As expected from the PV I–V and P–V characteristics, the array current chang
 
 ## 🔋 DC-Link Voltage
 
-![DC-Link Voltage](figures/DC_Link_Voltage.png)
+![DC-Link Voltage](Waveforms/DC%20Link%20Voltage.png)
 
 The DC-link voltage is maintained close to its **600 V reference** despite significant changes in the available PV power.
 
@@ -256,7 +256,7 @@ The small voltage deviation during irradiance transitions demonstrates effective
 
 ## 📈 Direct- and Quadrature-Axis Currents
 
-![Direct and Quadrature Currents](figures/direct_and_quadrature_currents_of_the_injected_current.png)
+![Direct and Quadrature Currents](Waveforms/Direct%20%26%20Quadrature%20Current%20of%20Injected%20Current.png)
 
 The d-axis current \(i_d\) follows the active-power demand, while the q-axis current \(i_q\) is regulated close to zero.
 
@@ -266,7 +266,7 @@ This demonstrates effective decoupled active/reactive current control and confir
 
 ## 🌐 Three-Phase Grid Voltage and Current at the PCC
 
-![Three-Phase Grid Voltage and Current](figures/3_phase_grid_voltage_and_current_at_PCC.png)
+![Three-Phase Grid Voltage and Current](Waveforms/3%20Phase%20Grid%20Voltage%20%26%20Current%20at%20PCC.png)
 
 The three-phase grid voltage and current waveforms are shown at the **Point of Common Coupling (PCC)**.
 
@@ -285,7 +285,7 @@ The PLL maintains synchronization with the grid voltage, enabling accurate activ
 
 ## 🔄 Dynamic Phase Voltage and Current Response
 
-![Phase Voltage and Current](figures/Dynamic_response_of_phase_current_and_phase_voltage.png)
+![Phase Voltage and Current](Waveforms/Dynamic%20Response%20of%20Phase%20Current%20%26%20Voltage.png)
 
 The phase current remains closely aligned with the corresponding grid voltage waveform.
 
@@ -295,7 +295,7 @@ The near-zero phase displacement between voltage and current demonstrates the **
 
 ## 📉 Total Harmonic Distortion of Grid Current
 
-![Grid Current THD](figures/THD_of_grid_current_at_PCC.png)
+![Grid Current THD](Waveforms/THD%20of%20Grid%20Current%20at%20PCC.png)
 
 The harmonic spectrum of the grid current results in a measured **THD of 2.34%**.
 
@@ -335,16 +335,16 @@ The following software and toolboxes are required:
 # 📁 Project Structure
 
 ```text
-Three-Phase-Grid-Connected-Inverter-Control-for-Photovoltaic-Systems_MATLAB-Simulink/
+Three-Phase-Grid-Connected-PV-Inverter-Control-Using-MATLAB-Simulink/
 │
-├── figures/
-│   ├── Irradiation_Profile.png
-│   ├── PV_array_outputs.png
-│   ├── DC_Link_Voltage.png
-│   ├── direct_and_quadrature_currents_of_the_injected_current.png
-│   ├── 3_phase_grid_voltage_and_grid_current_at_PCC.png
-│   ├── Dynamic_response_of_phase_current_and_phase_voltage.png
-│   └── THD_of_grid_current_at_PCC.png
+├── Waveforms/
+│   ├── 3 Phase Grid Voltage & Current at PCC.png
+│   ├── DC Link Voltage.png
+│   ├── Direct & Quadrature Current of Injected Current.png
+│   ├── Dynamic Response of Phase Current & Voltage.png
+│   ├── Irradiation Profile.png
+│   ├── PV Array Outputs.png
+│   └── THD of Grid Current at PCC.png
 │
-├── *.slx
+├── Three_Phase_Grid_Connected_PV_*.slx
 └── README.md
