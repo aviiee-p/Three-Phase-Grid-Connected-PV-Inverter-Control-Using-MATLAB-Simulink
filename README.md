@@ -43,7 +43,7 @@ The major subsystems are described below.
 
 ---
 
-## ☀️ 1. PV Array Model
+## 1. PV Array Model
 
 The PV array is modeled using a **single-diode equivalent circuit** to reproduce the electrical characteristics of the photovoltaic modules, including their I–V and P–V behavior under varying irradiance conditions.
 
@@ -71,7 +71,7 @@ The array is subjected to varying irradiance conditions to evaluate the dynamic 
 
 ---
 
-## 🔋 2. DC-DC Boost Converter and P&O MPPT
+## 2. DC-DC Boost Converter and P&O MPPT
 
 The DC-DC boost converter increases the PV-array voltage to the required DC-link voltage of approximately **600 V**.
 
@@ -120,7 +120,7 @@ This process is repeated continuously so that the PV operating point converges t
 
 ---
 
-# 🔄 3. Three-Phase VSI with dq-Frame Control
+# 3. Three-Phase VSI with dq-Frame Control
 
 The three-phase **Voltage Source Inverter (VSI)** converts the regulated DC-link voltage into three-phase AC power for grid injection.
 
@@ -151,7 +151,7 @@ This enables independent control of active and reactive power and allows the sys
 
 ---
 
-## 🔄 4. Phase-Locked Loop (PLL)
+## 4. Phase-Locked Loop (PLL)
 
 A **Phase-Locked Loop (PLL)** is used to synchronize the inverter with the grid voltage.
 
@@ -174,7 +174,7 @@ Proper synchronization is essential for accurate dq-frame control and unity powe
 
 ---
 
-## 🎛️ 5. Current Loop Control
+## 5. Current Loop Control
 
 The inner current-control loop regulates the inverter output currents so that they accurately follow their respective reference values.
 
@@ -192,7 +192,7 @@ The resulting control strategy enables stable power transfer from the PV array t
 
 ---
 
-# 🔌 6. LCL Output Filter
+# 6. LCL Output Filter
 
 An **LCL filter** is connected between the inverter and the grid to attenuate high-frequency switching harmonics produced by the PWM inverter.
 
@@ -220,7 +220,7 @@ The system was evaluated under changing solar irradiance conditions to verify th
 
 ---
 
-## ☀️ Irradiance Profile
+## Irradiance Profile
 
 ![Irradiance Profile](Waveforms/Irradiation%20Profile.png)
 
@@ -232,7 +232,7 @@ This allows the controller to be tested at multiple PV operating points.
 
 ---
 
-## ⚡ PV Array Power, Voltage, and Current
+## PV Array Power, Voltage, and Current
 
 ![PV Array Outputs](Waveforms/PV%20Array%20Outputs.png)
 
@@ -244,7 +244,7 @@ As expected from the PV I–V and P–V characteristics, the array current chang
 
 ---
 
-## 🔋 DC-Link Voltage
+## DC-Link Voltage
 
 ![DC-Link Voltage](Waveforms/DC%20Link%20Voltage.png)
 
@@ -254,7 +254,7 @@ The small voltage deviation during irradiance transitions demonstrates effective
 
 ---
 
-## 📈 Direct- and Quadrature-Axis Currents
+## Direct & Quadrature Axis Currents
 
 ![Direct and Quadrature Currents](Waveforms/Direct%20%26%20Quadrature%20Current%20of%20Injected%20Current.png)
 
@@ -264,7 +264,7 @@ This demonstrates effective decoupled active/reactive current control and confir
 
 ---
 
-## 🌐 Three-Phase Grid Voltage and Current at the PCC
+## Three-Phase Grid Voltage and Current at the PCC
 
 ![Three-Phase Grid Voltage and Current](Waveforms/3%20Phase%20Grid%20Voltage%20%26%20Current%20at%20PCC.png)
 
@@ -283,7 +283,7 @@ The PLL maintains synchronization with the grid voltage, enabling accurate activ
 
 ---
 
-## 🔄 Dynamic Phase Voltage and Current Response
+## Dynamic Phase Voltage & Current Response
 
 ![Phase Voltage and Current](Waveforms/Dynamic%20Response%20of%20Phase%20Current%20%26%20Voltage.png)
 
@@ -293,7 +293,7 @@ The near-zero phase displacement between voltage and current demonstrates the **
 
 ---
 
-## 📉 Total Harmonic Distortion of Grid Current
+## Total Harmonic Distortion of Grid Current
 
 ![Grid Current THD](Waveforms/THD%20of%20Grid%20Current%20at%20PCC.png)
 
